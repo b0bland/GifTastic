@@ -2,8 +2,7 @@
 var teams = ["Juventus", "Manchester United", "Ajax"];
 
 
-function displayTeamInfo () { 
-event.preventDefault();
+function displayTeamGIF () { 
 $("#images").text("")
 
 var search = $(this).attr("data-name")
@@ -39,10 +38,18 @@ function renderButtons() {
 
 }
 
+$("#add-team").on("click", function(event) {
+    event.preventDefault();
+
+    var newTeam = $("#teamname").val().trim();
+
+    teams.push(newTeam);
+
+    renderButtons();
+
+})
 
 
-// function renderButtons() {
-//     for (n=0;n<teams.length;n++) {
-//         $("#buttons").append()
-//     }
-// }
+$(document).on("click",".btn-info",displayTeamGIF);
+
+renderButtons();
