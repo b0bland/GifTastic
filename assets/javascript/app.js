@@ -2,8 +2,6 @@
 $("button").on("click", function () { 
 event.preventDefault();
 
-
-
 var search = "Juventus"
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Vw9epddThJnMcOqUCvmhP6DvvalODALI&q=" + search + "&limit=10"
 
@@ -15,11 +13,14 @@ $.ajax({
     for (var i=0;i<gifs.length;i++) {
         var teams = gifs[i].images.original.url;
         var rating = gifs[i].rating;
-        $("#images").append("<span class=gifs id=image" + [i] + "><div id=rating>Rating: " + rating + "</div><img src='" + teams + "'></span>")
+        $("#images").append(
+            "<div class='card' style='width: 18rem;' id=image" + [i] + "><img src='" + teams + "' height='200px' class='card-img-top' height='200px'><div class='card-body'><p class='card-text' id='rating'>Rating: " + rating + "</p></div></div>"
+            )
         console.log(gifs)
     }
-    
+})
 })
 
-
-})
+// .append(
+// "<div class='card' style='width: 18rem;' id=image" + [i] + ">><img src='" + teams + "' height='200px' class='card-img-top' height='200px'><div class='card-body'><p class='card-text' id='rating'>Rating: " + rating + "</p></div></div>"
+// )
