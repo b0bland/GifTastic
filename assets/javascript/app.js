@@ -1,12 +1,12 @@
 
-var teams = ["Juventus", "Manchester United", "Ajax"];
+var teams = ["Juventus", "Manchester United", "Ajax", "Villarreal", "Benfica"];
 
 
 function displayTeamGIF () { 
 $("#images").text("")
 
 var search = $(this).attr("data-name")
-var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Vw9epddThJnMcOqUCvmhP6DvvalODALI&q=" + search + "&limit=10"
+var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Vw9epddThJnMcOqUCvmhP6DvvalODALI&q=" + search + "&limit=10&rating=g"
 
 $.ajax({
     url: queryURL,
