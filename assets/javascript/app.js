@@ -13,8 +13,10 @@ $.ajax({
 }).then(function(response) {
     var gifs = response.data
     for (var i=0;i<gifs.length;i++) {
-        var teams = gifs[i].images.original.url
-        $("#images").append("<img src='" + teams + "'>")
+        var teams = gifs[i].images.original.url;
+        var rating = gifs[i].rating;
+        $("#images").append("<span class=gifs id=image" + [i] + "><div id=rating>Rating: " + rating + "</div><img src='" + teams + "'></span>")
+        console.log(gifs)
     }
     
 })
