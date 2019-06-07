@@ -15,9 +15,10 @@ $.ajax({
     var gifs = response.data
     for (var i=0;i<gifs.length;i++) {
         var teams = gifs[i].images.original.url;
+        var teamsst = gifs[i].images.original_still.url;
         var rating = gifs[i].rating;
         $("#images").append(
-            "<div class='card' style='width: 18rem;' id=image" + [i] + "><img src='" + teams + "' height='200px' class='card-img-top' height='200px'><div class='card-body'><p class='card-text' id='rating'>Rating: " + rating + "</p></div></div>"
+            "<div class='card' style='width: 18rem;' id=image" + [i] + "><img src='" + teamsst + "' data-still='" + teamsst + "' data-animate='" + teams + "' data-state='still' height='200px' class='card-img-top' height='200px'><div class='card-body'><p class='card-text' id='rating'>Rating: " + rating + "</p></div></div>"
             )
         console.log(gifs)
     }
@@ -53,3 +54,18 @@ $("#add-team").on("click", function(event) {
 $(document).on("click",".btn-info",displayTeamGIF);
 
 renderButtons();
+
+
+$(document).on("click",".card-img-top", function() {
+    
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+      $(this).attr("data-state", "animate");
+      $(this).attr("src",$(this).attr("data-animate"));
+    }
+    else {
+      $(this).attr("data-state", "still");
+      $(this).attr("src",$(this).attr("data-still"));
+    }
+});
