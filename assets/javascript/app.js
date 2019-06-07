@@ -30,7 +30,7 @@ function renderButtons() {
 
     for (i=0;i<teams.length;i++) {
         var newButton = $("<button>")
-        newButton.addClass("btn", "btn-group-small", "btn-info")
+        newButton.addClass("btn btn-group-small btn-info")
         newButton.attr("data-name",teams[i])
         newButton.text(teams[i])
         $("#buttons").append(newButton)
