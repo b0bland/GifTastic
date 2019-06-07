@@ -1,8 +1,12 @@
 
-$("button").on("click", function () { 
-event.preventDefault();
+var teams = ["Juventus", "Manchester United", "Ajax"];
 
-var search = "Juventus"
+
+function displayTeamInfo () { 
+event.preventDefault();
+$("#images").text("")
+
+var search = $(this).attr("data-name")
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=Vw9epddThJnMcOqUCvmhP6DvvalODALI&q=" + search + "&limit=10"
 
 $.ajax({
@@ -19,8 +23,26 @@ $.ajax({
         console.log(gifs)
     }
 })
-})
+}
 
-// .append(
-// "<div class='card' style='width: 18rem;' id=image" + [i] + ">><img src='" + teams + "' height='200px' class='card-img-top' height='200px'><div class='card-body'><p class='card-text' id='rating'>Rating: " + rating + "</p></div></div>"
-// )
+function renderButtons() {
+
+    $("#buttons").empty();
+
+    for (i=0;i<teams.length;i++) {
+        var newButton = $("<button>")
+        newButton.addClass("btn", "btn-group-small", "btn-info")
+        newButton.attr("data-name",teams[i])
+        newButton.text(teams[i])
+        $("#buttons").append(newButton)
+    }
+
+}
+
+
+
+// function renderButtons() {
+//     for (n=0;n<teams.length;n++) {
+//         $("#buttons").append()
+//     }
+// }
